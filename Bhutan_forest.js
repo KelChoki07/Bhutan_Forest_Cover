@@ -15,7 +15,8 @@ Map.centerObject(hansen_clip);
 
 // Export.image.toDrive({
   image: hansen_clip,
-  description: "Hansen_global_forest_bhutan",
+  description: "Hansen_global_forest_bhutan_30m",
+  scale: 30,
   region: roi,
  });
 
