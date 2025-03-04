@@ -1,4 +1,4 @@
-# Download Bhutan_Forest_Cover
+#Bhutan_Forest_Cover
 
 1. Hansen Global Forest Change v1.11 (2000-2023)
 
@@ -9,6 +9,8 @@ var dataset = ee.Image('UMD/hansen/global_forest_change_2023_v1_11');
 
 Map.addLayer(dataset.clip(roi), {bands: ['treecover2000'], palette: ['000000', '00FF00'], max:100}, 'Bhutan Tree cover');
 Map.addLayer(ee.image().paint(roi, 0,1), {palette: ['red']}, 'Bhutan');
+
+Link: https://code.earthengine.google.com/d74b18afa440023373817244903ea04b
 
 2. ESA Land Cover Data 2021
 -Global land cover product at 10 m resolution for 2020 based on Sentinel-1 and 2 data
