@@ -1,4 +1,5 @@
 
+// A. Directly import Hansen global forest change data by using thier Earth Engine Snippet
 
 var countries = ee.FeatureCollection('USDOS/LSIB_SIMPLE/2017');
 var roi = countries.filter(ee.Filter.eq('country_na', 'Bhutan'));
@@ -6,11 +7,22 @@ var roi = countries.filter(ee.Filter.eq('country_na', 'Bhutan'));
 var dataset = ee.Image('UMD/hansen/global_forest_change_2023_v1_11');
 
 Map.addLayer(dataset.clip(roi), {bands: ['treecover2000'], palette: ['000000', '00FF00'], max:100}, 'Bhutan Tree cover');
-Map.addLayer(ee.image().paint(roi, 0,1), {palette: ['red']}, 'Bhutan');
+Map.addLayer(ee.Image().paint(roi, 0,1), {palette: ['red']}, 'Bhutan');
+
+// Clip with roi(Region of Interest)
+var hansen_clip = dataset.clip(roi);
+Map.centerObject(hansen_clip);
+
+// Export.image.toDrive({
+  image: hansen_clip,
+  description: "Hansen_global_forest_bhutan",
+  region: roi,
+ });
 
 
 
-// Download ESA Land Cover
+
+// B. Download ESA Land Cover
 
 // 1. Import ESA Data
 var esa = ee.ImageCollection("ESA/WorldCover/v100").first();
